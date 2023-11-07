@@ -16,8 +16,8 @@ class Facility(models.Model):
         ('proposed', 'Proposed'),
         ('under_review', 'Under Review'),
         ('planned', 'Planned'),
-        ('cancelled', 'Cancelled'),
-        ('construction', 'Construction'),
+        ('cancelled', 'Cancelled'), 
+        ('construction', 'Under Construction'),
         ('completed', 'Completed'),
     ]
 
@@ -30,8 +30,8 @@ class Facility(models.Model):
     ]
 
     nama = models.CharField(max_length=50)
-    type = models.CharField(max_length=20, choices=TYPE_CHOICES)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='proposed')
+    types = models.CharField(max_length=20, choices=TYPE_CHOICES)
+    status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='proposed')
     open = models.BooleanField(default=False)
     location = models.PointField(srid=4326, spatial_index=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
